@@ -59,32 +59,32 @@ class Street extends Element {
 
 /*
 * -----------------------------------------------------------------------------
-* REPORT FUNCTION
+* REPORT FUNCTIONS
 * -----------------------------------------------------------------------------
 */
 
-const reporter = () => {
-
+const reportParks = (parks) => {
     console.log(`---------- PARKS REPORT ----------`);
 
-    let parksAges = allParks.map((current) => current.age());
-    let sumParksAges = parksAges.reduce((previous, current) => current += previous);
+    let parksAges = parks.map((el) => el.age());
+    let sumParksAges = parksAges.reduce((previous, el) => el += previous);
     let avgParksAges = sumParksAges / parksAges.length;
     console.log(`Our ${parksAges.length} parks have an average age of ${avgParksAges} years.`);
 
-    allParks.forEach((current) => current.density());
-    allParks.forEach((current) => current.treesCap());
+    parks.forEach((el) => el.density());
+    parks.forEach((el) => el.treesCap());
 
+};
+
+const reportStreets = (streets) => {
     console.log(`---------- STREETS REPORT ----------`);
 
-    let streetsLengthes = allStreets.map((current) => current.length);
-    let sumStreetsLengthes = streetsLengthes.reduce((previous, current) => current += previous);
+    let streetsLengthes = streets.map((el) => el.length);
+    let sumStreetsLengthes = streetsLengthes.reduce((previous, el) => el += previous);
     let avgStreetsLengthes = sumStreetsLengthes / streetsLengthes.length;
-
     console.log(`Our ${streetsLengthes.length} streets have a total length of ${sumStreetsLengthes} km and an average length of ${avgStreetsLengthes} km.`);
 
-    allStreets.forEach((current) => current.classification());
-
+    streets.forEach((el) => el.classification());
 };
 
 /*
@@ -107,4 +107,5 @@ const allStreets = [
     new Street('Ray\'s Street', 1990, 1.3, 2)
 ];
 
-reporter();
+reportParks(allParks);
+reportStreets(allStreets);
